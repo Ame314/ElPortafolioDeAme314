@@ -6,7 +6,7 @@ export default function Portfolio() {
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerText}>Ame Grob</Text>
-        <Text style={styles.subHeaderText}>Futura ingegneria</Text>
+        <Text style={styles.subHeaderText}>Futura ingeniera</Text>
       </View>
       <View style={styles.profileSection}>
         <Image 
