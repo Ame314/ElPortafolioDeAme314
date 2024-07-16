@@ -36,7 +36,7 @@ const layoutContent = `import { Stack } from "expo-router";
 export default function RootLayout() {
   return (
     <Stack>
-      <Stack.Screen name="index" />
+      <Stack.Screen name="Ame" />
     </Stack>
   );
 }
@@ -54,7 +54,7 @@ fs.rename(oldDirPath, newDirPath, (error) => {
     }
     console.log('New /app directory created.');
 
-    const indexPath = path.join(newAppDirPath, 'index.tsx');
+    const indexPath = path.join(newAppDirPath, 'Ame.tsx');
     fs.writeFile(indexPath, indexContent, (error) => {
       if (error) {
         return console.error(`Error creating index.tsx: ${error}`);

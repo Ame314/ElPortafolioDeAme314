@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Text,
   View,
@@ -8,28 +8,32 @@ import {
   Image,
   ScrollView,
   Modal,
+  Animated,
 } from "react-native";
 
-export default function Portfolio() {
+export default function Home() {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalContent, setModalContent] = useState("");
+  const [fadeInAnim] = useState(new Animated.Value(0)); // Animación para el fade-in
+
+  useEffect(() => {
+    Animated.timing(fadeInAnim, {
+      toValue: 1,
+      duration: 1000,
+      useNativeDriver: true,
+    }).start();
+  }, [fadeInAnim]);
 
   const openModal = (content) => {
     setModalContent(content);
     setModalVisible(true);
   };
 
-  const skills = [
-    { title: "Habilidad 1", description: "Información sobre Habilidad 1" },
-    { title: "Habilidad 2", description: "Información sobre Habilidad 2" },
-    { title: "Habilidad 3", description: "Información sobre Habilidad 3" },
-  ];
-
   const projects = [
-    { title: "Juego 4 en línea", description: ":)" },
-    { title: "Proyecto 2", description: "Descripción del proyecto 2" },
-    { title: "Proyecto 3", description: "Descripción del proyecto 3" },
-    { title: "Proyecto 4", description: "Descripción del proyecto 4" },
+    { title: "Juego 4 en línea", description: "Jueguito " },
+    { title: "Ahorcado", description: "Jueguito" },
+    { title: "3 en línea", description: "Descripción del proyecto 3" },
+    { title: "2048", description: "Descripción del proyecto 4" },
   ];
 
   const renderProjects = () =>
@@ -45,17 +49,29 @@ export default function Portfolio() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Ame Grob</Text>
-        <Text style={styles.subHeaderText}>Junior Developer</Text>
-      </View>
+      <TouchableOpacity onPress={() => {}}>
+        <View style={styles.header}>
+          <View style={styles.headerTextContainer}>
+            <Animated.Text
+              style={[styles.headerText, { opacity: fadeInAnim }]}
+            >
+              Ame Grob
+            </Animated.Text>
+            <Animated.Text
+              style={[styles.subHeaderText, { opacity: fadeInAnim }]}
+            >
+              Junior Developer
+            </Animated.Text>
+          </View>
+          <Image
+            source={{
+              uri: "https://generated-assets.prod.myninja.ai/ce0a7a40-de2a-469a-9daf-a502084cce7e/46cd4b54-f198-4b41-a185-2e5f1218e26e_0.png",
+            }}
+            style={styles.profileImage}
+          />
+        </View>
+      </TouchableOpacity>
       <View style={styles.profileSection}>
-        <Image
-          source={{
-            uri: "https://generated-assets.prod.myninja.ai/ce0a7a40-de2a-469a-9daf-a502084cce7e/46cd4b54-f198-4b41-a185-2e5f1218e26e_0.png",
-          }}
-          style={styles.profileImage}
-        />
         <Text style={styles.description}>
           Estudiante de Tecnología de la Información.
         </Text>
@@ -63,35 +79,41 @@ export default function Portfolio() {
 
       <View style={styles.blackBar} />
 
-      <View style={styles.aboutSection}>
-        <View style={styles.aboutTextContainer}>
+      <View style={styles.aboutSkillsSection}>
+        <View style={styles.aboutSection}>
           <Text style={styles.sectionTitle}>About Me</Text>
           <Text style={styles.aboutDescription}>
-          Hi, I'm Amelie Grob, a 17-year-old computer science student in my third semester of university. I have a strong passion for technology and robotics.
+            Hi, I'm Amelie Grob, a 17-year-old computer science student in my
+            third semester of university. I have a strong passion for technology
+            and robotics.
           </Text>
         </View>
-        <Image
-          source={{
-            uri: "https://generated-assets.prod.myninja.ai/ce0a7a40-de2a-469a-9daf-a502084cce7e/46cd4b54-f198-4b41-a185-2e5f1218e26e_0.png",
-          }}
-          style={styles.aboutImage}
-        />
-      </View>
-
-      <View style={styles.blackBar} />
-
-      <View style={styles.skillsSection}>
-        <Text style={styles.sectionTitle}>Skills</Text>
-        <View style={styles.skillsRow}>
-          {skills.map((skill, index) => (
-            <TouchableOpacity
-              key={index}
-              style={styles.skillBox}
-              onPress={() => openModal(skill.description)}
-            >
-              <Text style={styles.skillTitle}>{skill.title}</Text>
-            </TouchableOpacity>
-          ))}
+        <View style={styles.skillsSection}>
+          <Text style={styles.sectionTitle}>Skills</Text>
+          <Image
+            source={{
+              uri: "https://cdn.icon-icons.com/icons2/2415/PNG/512/python_original_logo_icon_146381.png",
+            }}
+            style={styles.skillsImage}
+          />
+          <Image
+            source={{
+              uri: "https://cdn.icon-icons.com/icons2/2407/PNG/512/docker_icon_146192.png",
+            }}
+            style={styles.skillsImage}
+          />
+          <Image
+            source={{
+              uri: "https://cdn.icon-icons.com/icons2/2415/PNG/512/react_original_logo_icon_146374.png",
+            }}
+            style={styles.skillsImage}
+          />
+          <Image
+            source={{
+              uri: "https://cdn.icon-icons.com/icons2/2415/PNG/512/csharp_original_logo_icon_146578.png",
+            }}
+            style={styles.skillsImage}
+          />
         </View>
       </View>
 
@@ -174,8 +196,15 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
     alignItems: "center",
     marginBottom: 20,
+    paddingHorizontal: 20,
+    width: "100%",
+  },
+  headerTextContainer: {
+    maxWidth: "50%",
   },
   headerText: {
     fontSize: 36,
@@ -186,15 +215,15 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: "#b3b3b3",
   },
-  profileSection: {
-    alignItems: "center",
-    marginBottom: 30,
-  },
   profileImage: {
     width: 150,
     height: 150,
     borderRadius: 75,
     marginBottom: 20,
+  },
+  profileSection: {
+    alignItems: "center",
+    marginBottom: 30,
   },
   description: {
     fontSize: 18,
@@ -205,17 +234,17 @@ const styles = StyleSheet.create({
   blackBar: {
     width: "100%",
     height: 10,
-    backgroundColor: "#000000",
+    backgroundColor: "#800080", // Morado
     marginVertical: 20,
   },
-  aboutSection: {
+  aboutSkillsSection: {
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
     width: "100%",
     marginBottom: 30,
   },
-  aboutTextContainer: {
+  aboutSection: {
     flex: 1,
     paddingHorizontal: 20,
   },
@@ -230,33 +259,14 @@ const styles = StyleSheet.create({
     color: "#b3b3b3",
     textAlign: "center",
   },
-  aboutImage: {
-    flex: 1,
-    width: 150,
-    height: 150,
-    borderRadius: 10,
-    marginHorizontal: 20,
-  },
   skillsSection: {
-    width: "100%",
+    flex: 1,
     alignItems: "center",
-    marginBottom: 30,
   },
-  skillsRow: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    width: "100%",
-  },
-  skillBox: {
-    backgroundColor: "rgba(255, 255, 255, 0.1)",
-    padding: 20,
+  skillsImage: {
+    width: 50,
+    height: 50,
     borderRadius: 10,
-    width: "30%",
-    alignItems: "center",
-  },
-  skillTitle: {
-    fontSize: 20,
-    color: "#ffffff",
     marginBottom: 10,
   },
   projectsSection: {
@@ -286,8 +296,7 @@ const styles = StyleSheet.create({
   footer: {
     width: "100%",
     backgroundColor: "rgba(0, 0, 0, 0.7)",
-    padding: 20,
-    borderTopWidth: 1,
+    padding: 20, // Agregué la coma que faltaba aquí
     borderTopColor: "white",
     alignItems: "center",
   },
@@ -297,7 +306,7 @@ const styles = StyleSheet.create({
   },
   link: {
     fontSize: 18,
-    color: "#1e90ff",
+    color: "#800080", // Morado
     textDecorationLine: "underline",
     marginHorizontal: 10,
   },
@@ -323,12 +332,13 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   closeButton: {
-    backgroundColor: "#1e90ff",
+    backgroundColor: "#800080", // Morado
     padding: 10,
     borderRadius: 5,
+    marginTop: 10,
   },
   closeButtonText: {
-    color: "#fff",
+    color: "#ffffff",
     fontSize: 16,
   },
   projectImgcont: {
@@ -336,5 +346,4 @@ const styles = StyleSheet.create({
     height: 45,
     borderRadius: 5,
     marginRight: 5,
-  },
-});
+  },});
