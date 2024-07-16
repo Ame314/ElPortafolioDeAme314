@@ -26,7 +26,7 @@ export default function Portfolio() {
   ];
 
   const projects = [
-    { title: "Proyecto 1", description: "Descripción del proyecto 1" },
+    { title: "Juego 4 en línea", description: ":)" },
     { title: "Proyecto 2", description: "Descripción del proyecto 2" },
     { title: "Proyecto 3", description: "Descripción del proyecto 3" },
     { title: "Proyecto 4", description: "Descripción del proyecto 4" },
@@ -67,7 +67,7 @@ export default function Portfolio() {
         <View style={styles.aboutTextContainer}>
           <Text style={styles.sectionTitle}>About Me</Text>
           <Text style={styles.aboutDescription}>
-            Soy Amelie, tengo 17 años y me gusta dormir.
+          Hi, I'm Amelie Grob, a 17-year-old computer science student in my third semester of university. I have a strong passion for technology and robotics.
           </Text>
         </View>
         <Image
