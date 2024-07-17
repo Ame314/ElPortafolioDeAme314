@@ -30,10 +30,10 @@ export default function Home() {
   };
 
   const projects = [
-    { title: "Juego 4 en línea", description: "Jueguito " },
-    { title: "Ahorcado", description: "Jueguito" },
-    { title: "3 en línea", description: "Descripción del proyecto 3" },
-    { title: "2048", description: "Descripción del proyecto 4" },
+    { title: "Juego 4 en línea", description: "Este es un juego desarrollado en Java.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAtSlf1LjXZDCFYCcv5KdJvkLKNPU-Et1XIw&s", link: "https://github.com/Ame314/juego4enlinea" },
+    { title: "Ahorcado", description: "Juego del ahorcado desarrollado en Java.", image: "https://i.pinimg.com/736x/94/5d/81/945d81b5b521e4e9ee60b78c511043ef.jpg", link: "https://github.com/Ame314/ahorcado" },
+    { title: "3 en línea", description: "Juego 3 en línea desarrollado en Java.", image: "https://papergames.io/es/assets/games/tictactoe/thumbnail.png", link: "https://github.com/Ame314/3enlinea" },
+    { title: "2048", description: "Juego 2048 desarrollado en Python.", image: "https://fscl01.fonpit.de/userfiles/4774964/image/AndroidPIT-2048-win.jpg", link: "https://github.com/Ame314/2048" },
   ];
 
   const renderProjects = () =>
@@ -43,37 +43,40 @@ export default function Home() {
         style={styles.projectBox}
         onPress={() => openModal(project.description)}
       >
+        <Image source={{ uri: project.image }} style={styles.projectImage} />
         <Text style={styles.projectTitle}>{project.title}</Text>
       </TouchableOpacity>
     ));
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <TouchableOpacity onPress={() => {}}>
-        <View style={styles.header}>
-          <View style={styles.headerTextContainer}>
-            <Animated.Text
-              style={[styles.headerText, { opacity: fadeInAnim }]}
-            >
-              Ame Grob
-            </Animated.Text>
-            <Animated.Text
-              style={[styles.subHeaderText, { opacity: fadeInAnim }]}
-            >
-              Junior Developer
-            </Animated.Text>
-          </View>
-          <Image
-            source={{
-              uri: "https://generated-assets.prod.myninja.ai/ce0a7a40-de2a-469a-9daf-a502084cce7e/46cd4b54-f198-4b41-a185-2e5f1218e26e_0.png",
-            }}
-            style={styles.profileImage}
-          />
+      <View style={styles.header}>
+        <Text style={styles.logoText}>AG</Text>
+        <View style={styles.navLinks}>
+          <TouchableOpacity onPress={() => { }}>
+            <Text style={styles.navLink}>Inicio</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => { }}>
+            <Text style={styles.navLink}>Proyectos</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => { }}>
+            <Text style={styles.navLink}>Certificados</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => { }}>
+            <Text style={styles.navLink}>Sobre mí</Text>
+          </TouchableOpacity>
         </View>
-      </TouchableOpacity>
+      </View>
+      <View style={styles.heroSection}>
+        <Text style={styles.heroTitle}>
+          Soy <Text style={styles.heroName}>Amelie Grob</Text>, Junior Developer
+        </Text>
+        <Text style={styles.heroSubtitle}>Tercer nivel en tecnologías de la Información</Text>
+      </View>
+
       <View style={styles.profileSection}>
         <Text style={styles.description}>
-          Estudiante de Tecnología de la Información.
+          Cada día aprendiendo algo nuevo.
         </Text>
       </View>
 
@@ -88,40 +91,79 @@ export default function Home() {
             and robotics.
           </Text>
         </View>
+        <View style={styles.skillsSeparator} />
         <View style={styles.skillsSection}>
           <Text style={styles.sectionTitle}>Skills</Text>
-          <Image
-            source={{
-              uri: "https://cdn.icon-icons.com/icons2/2415/PNG/512/python_original_logo_icon_146381.png",
-            }}
-            style={styles.skillsImage}
-          />
-          <Image
-            source={{
-              uri: "https://cdn.icon-icons.com/icons2/2407/PNG/512/docker_icon_146192.png",
-            }}
-            style={styles.skillsImage}
-          />
-          <Image
-            source={{
-              uri: "https://cdn.icon-icons.com/icons2/2415/PNG/512/react_original_logo_icon_146374.png",
-            }}
-            style={styles.skillsImage}
-          />
-          <Image
-            source={{
-              uri: "https://cdn.icon-icons.com/icons2/2415/PNG/512/csharp_original_logo_icon_146578.png",
-            }}
-            style={styles.skillsImage}
-          />
+          <View style={styles.skillsContainer}>
+            <Image
+              source={{
+                uri: "https://cdn.icon-icons.com/icons2/2415/PNG/512/python_original_logo_icon_146381.png",
+              }}
+              style={styles.skillsImage}
+            />
+            <Image
+              source={{
+                uri: "https://cdn.icon-icons.com/icons2/2407/PNG/512/docker_icon_146192.png",
+              }}
+              style={styles.skillsImage}
+            />
+            <Image
+              source={{
+                uri: "https://cdn.icon-icons.com/icons2/2415/PNG/512/react_original_logo_icon_146374.png",
+              }}
+              style={styles.skillsImage}
+            />
+            <Image
+              source={{
+                uri: "https://cdn.icon-icons.com/icons2/2415/PNG/512/csharp_original_logo_icon_146578.png",
+              }}
+              style={styles.skillsImage}
+            />
+            <Image
+              source={{
+                uri: "https://cdn.icon-icons.com/icons2/2415/PNG/512/javascript_original_logo_icon_146455.png",
+              }}
+              style={styles.skillsImage}
+            />
+            <Image
+              source={{
+                uri: "https://cdn.icon-icons.com/icons2/159/PNG/256/java_22523.png",
+              }}
+              style={styles.skillsImage}
+            />
+            <Image
+              source={{
+                uri: "https://cdn.icon-icons.com/icons2/3398/PNG/512/plus_logo_c_icon_214621.png",
+              }}
+              style={styles.skillsImage}
+            />
+          </View>
         </View>
       </View>
 
-      <View style={styles.blackBar} />
+      <View style={styles.purpleSeparator} />
 
       <View style={styles.projectsSection}>
         <Text style={styles.sectionTitle}>Projects</Text>
         <View style={styles.projectsRow}>{renderProjects()}</View>
+      </View>
+
+      <View style={styles.purpleSeparator} />
+
+      <View style={styles.certificatesSection}>
+        <Text style={styles.sectionTitle}>Certificates</Text>
+        <TouchableOpacity
+          style={styles.certificateBox}
+          onPress={() => openModal("Description of the certificate.")}
+        >
+          {/* Replace with your certificate image */}
+          <Image
+            source={{
+              uri: "https://example.com/certificate-image.jpg",
+            }}
+            style={styles.certificateImage}
+          />
+        </TouchableOpacity>
       </View>
 
       <Modal
@@ -134,10 +176,16 @@ export default function Home() {
           <View style={styles.modalContainer}>
             <Text style={styles.modalText}>{modalContent}</Text>
             <TouchableOpacity
+              onPress={() => Linking.openURL(modalContent.link)}
+              style={styles.linkButton}
+            >
+              <Text style={styles.linkButtonText}>Open on GitHub</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
               onPress={() => setModalVisible(false)}
               style={styles.closeButton}
             >
-              <Text style={styles.closeButtonText}>Cerrar</Text>
+              <Text style={styles.closeButtonText}>Close</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -196,154 +244,215 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   header: {
+    width: "100%",
+    backgroundColor: "#000000",
+    padding: 10,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 20,
-    paddingHorizontal: 20,
-    width: "100%",
   },
-  headerTextContainer: {
-    maxWidth: "50%",
-  },
-  headerText: {
-    fontSize: 36,
-    fontWeight: "bold",
-    color: "#ffffff",
-  },
-  subHeaderText: {
+  logoText: {
     fontSize: 24,
-    color: "#b3b3b3",
+    color: "#800080", // Morado
+    fontWeight: "bold",
   },
-  profileImage: {
-    width: 150,
-    height: 150,
-    borderRadius: 75,
-    marginBottom: 20,
+  navLinks: {
+    flexDirection: "row",
+  },
+  navLink: {
+    fontSize: 18,
+    color: "#ffffff",
+    marginHorizontal: 10,
+  },
+  heroSection: {
+    width: "100%",
+    padding: 40,
+    backgroundColor: "#000000",
+    alignItems: "center",
+  },
+  heroTitle: {
+    fontSize: 36,
+    color: "#ffffff",
+    fontWeight: "bold",
+    textAlign: "center",
+    marginBottom: 10,
+  },
+  heroName: {
+    color: "#800080", // Morado
+  },
+  heroSubtitle: {
+    fontSize: 18,
+    color: "#ffffff",
+    textAlign: "center",
   },
   profileSection: {
+    width: "100%",
+    backgroundColor: "#0d0d0d",
+    paddingHorizontal: 30,
+    paddingVertical: 15,
     alignItems: "center",
-    marginBottom: 30,
   },
   description: {
     fontSize: 18,
-    color: "#b3b3b3",
+    color: "#ffffff",
     textAlign: "center",
-    marginHorizontal: 20,
   },
   blackBar: {
-    width: "100%",
-    height: 10,
+    width: "90%",
+    height: 2,
     backgroundColor: "#800080", // Morado
     marginVertical: 20,
   },
   aboutSkillsSection: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center",
     width: "100%",
-    marginBottom: 30,
+    paddingHorizontal: 30,
+    paddingVertical: 15,
+    backgroundColor: "#0d0d0d",
   },
   aboutSection: {
-    flex: 1,
-    paddingHorizontal: 20,
+    width: "100%",
+    paddingRight: 20,
+    marginBottom: 20,
   },
   sectionTitle: {
-    fontSize: 28,
-    fontWeight: "bold",
+    fontSize: 24,
     color: "#ffffff",
+    fontWeight: "bold",
     marginBottom: 10,
   },
   aboutDescription: {
-    fontSize: 18,
-    color: "#b3b3b3",
-    textAlign: "center",
+    fontSize: 16,
+    color: "#ffffff",
+  },
+  skillsSeparator: {
+    width: "100%",
+    height: 2,
+    backgroundColor: "#800080", // Morado
+    marginVertical: 20,
   },
   skillsSection: {
-    flex: 1,
+    width: "100%",
     alignItems: "center",
+    backgroundColor: "#1a1a1a",
+    paddingVertical: 15,
+    marginBottom: 20,
+    borderRadius: 10,
+  },
+  skillsContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
   },
   skillsImage: {
-    width: 50,
-    height: 50,
-    borderRadius: 10,
+    width: 40,
+    height: 40,
+    marginHorizontal: 10,
     marginBottom: 10,
+  },
+  purpleSeparator: {
+    width: "100%",
+    height: 2,
+    backgroundColor: "#800080", // Morado
+    marginVertical: 20,
   },
   projectsSection: {
     width: "100%",
-    alignItems: "center",
-    marginBottom: 30,
+    paddingHorizontal: 30,
+    paddingVertical: 15,
+    backgroundColor: "#0d0d0d",
   },
   projectsRow: {
     flexDirection: "row",
     flexWrap: "wrap",
-    justifyContent: "space-around",
-    width: "100%",
+    justifyContent: "space-between",
   },
   projectBox: {
-    backgroundColor: "rgba(255, 255, 255, 0.1)",
-    padding: 20,
+    width: "48%",
+    backgroundColor: "#1a1a1a",
     borderRadius: 10,
-    width: "45%",
-    marginVertical: 10,
+    padding: 10,
+    marginBottom: 20,
     alignItems: "center",
+  },
+  projectImage: {
+    width: "100%",
+    height: 100,
+    borderRadius: 10,
   },
   projectTitle: {
-    fontSize: 20,
+    fontSize: 16,
     color: "#ffffff",
-    marginBottom: 10,
+    fontWeight: "bold",
+    marginTop: 10,
+    textAlign: "center",
   },
-  footer: {
+  certificatesSection: {
     width: "100%",
-    backgroundColor: "rgba(0, 0, 0, 0.7)",
-    padding: 20, // Agregué la coma que faltaba aquí
-    borderTopColor: "white",
+    paddingHorizontal: 30,
+    paddingVertical: 15,
+    backgroundColor: "#0d0d0d",
+  },
+  certificateBox: {
+    width: "48%",
+    backgroundColor: "#1a1a1a",
+    borderRadius: 10,
+    padding: 10,
+    marginBottom: 20,
     alignItems: "center",
   },
-  linksContainer: {
-    flexDirection: "row",
-    marginBottom: 20,
-  },
-  link: {
-    fontSize: 18,
-    color: "#800080", // Morado
-    textDecorationLine: "underline",
-    marginHorizontal: 10,
-  },
-  footerText: {
-    color: "#ffffff",
+  certificateImage: {
+    width: "100%",
+    height: 200,
+    borderRadius: 10,
   },
   modalBackground: {
     flex: 1,
+    backgroundColor: "rgba(0, 0, 0, 0.8)",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
   modalContainer: {
     width: "80%",
-    backgroundColor: "#ffffff",
+    backgroundColor: "#1a1a1a",
     borderRadius: 10,
     padding: 20,
     alignItems: "center",
   },
   modalText: {
-    fontSize: 18,
+    fontSize: 16,
+    color: "#ffffff",
     textAlign: "center",
     marginBottom: 20,
   },
   closeButton: {
-    backgroundColor: "#800080", // Morado
-    padding: 10,
-    borderRadius: 5,
     marginTop: 10,
+    padding: 10,
+    backgroundColor: "#800080", // Morado
+    borderRadius: 5,
   },
   closeButtonText: {
-    color: "#ffffff",
     fontSize: 16,
+    color: "#ffffff",
+    textAlign: "center",
+  },
+  footer: {
+    width: "100%",
+    backgroundColor: "#000000",
+    paddingVertical: 20,
+    alignItems: "center",
+  },
+  linksContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    marginBottom: 10,
   },
   projectImgcont: {
-    width: 45,
-    height: 45,
-    borderRadius: 5,
-    marginRight: 5,
-  },});
+    width: 40,
+    height: 40,
+    marginHorizontal: 10,
+  },
+  footerText: {
+    fontSize: 14,
+    color: "#ffffff",
+  },
+});
