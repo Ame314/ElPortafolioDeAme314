@@ -31,8 +31,8 @@ export default function Home() {
 
   const projects = [
     { title: "Juego 4 en línea", description: "Este es un juego desarrollado en Java.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAtSlf1LjXZDCFYCcv5KdJvkLKNPU-Et1XIw&s", link: "https://github.com/Ame314/juego4enlinea" },
-    { title: "Ahorcado", description: "Juego del ahorcado desarrollado en Java.", image: "https://i.pinimg.com/736x/94/5d/81/945d81b5b521e4e9ee60b78c511043ef.jpg", link: "https://github.com/Ame314/ahorcado" },
-    { title: "3 en línea", description: "Juego 3 en línea desarrollado en Java.", image: "https://papergames.io/es/assets/games/tictactoe/thumbnail.png", link: "https://github.com/Ame314/3enlinea" },
+    { title: "Ahorcado", description: "Juego del ahorcado desarrollado en c#.", image: "https://i.pinimg.com/736x/94/5d/81/945d81b5b521e4e9ee60b78c511043ef.jpg", link: "https://github.com/Ame314/ahorcado" },
+    { title: "3 en línea", description: "Juego 3 en línea desarrollado en c#.", image: "https://papergames.io/es/assets/games/tictactoe/thumbnail.png", link: "https://github.com/Ame314/3enlinea" },
     { title: "2048", description: "Juego 2048 desarrollado en Python.", image: "https://fscl01.fonpit.de/userfiles/4774964/image/AndroidPIT-2048-win.jpg", link: "https://github.com/Ame314/2048" },
   ];
 
@@ -453,6 +453,25 @@ const styles = StyleSheet.create({
   },
   footerText: {
     fontSize: 14,
+    color: "#ffffff",
+  },
+  aboutSection: {
+    width: "50%", // Ajusta el ancho según tu diseño
+    paddingRight: 20,
+  },
+  aboutHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 10,
+  },
+  aboutImage: {
+    width: 60, // Ajusta el tamaño de la imagen según sea necesario
+    height: 60,
+    borderRadius: 30, // Hace que la imagen sea circular (ajusta según necesites)
+    marginRight: 10,
+  },
+  aboutDescription: {
+    fontSize: 16,
     color: "#ffffff",
   },
 });
