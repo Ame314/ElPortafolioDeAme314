@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import {
   Text,
   View,
@@ -9,12 +9,13 @@ import {
   Modal,
   Animated,
 } from "react-native";
-import {styles} from '../carpetita/estilos'; // Importando los estilos 
+import { styles } from "../carpetita/estilos"; // Asegúrate de que la ruta sea correcta
 
 export default function Home() {
   const [modalVisible, setModalVisible] = useState(false);
-  const [modalContent, setModalContent] = useState("11");
+  const [modalContent, setModalContent] = useState("");
   const [fadeInAnim] = useState(new Animated.Value(0)); // Animación para el fade-in
+  const scrollViewRef = useRef(null);
 
   useEffect(() => {
     Animated.timing(fadeInAnim, {
@@ -24,16 +25,51 @@ export default function Home() {
     }).start();
   }, [fadeInAnim]);
 
-  const openModal = (content) => {
+  const openModal = (content: string) => {
     setModalContent(content);
     setModalVisible(true);
   };
 
+  const handleScrollToSection = (section: string) => {
+    const sectionMapping: { [key: string]: number } = {
+      home: 0,
+      about: 1,
+      skills: 2,
+      projects: 3,
+      certificates: 4,
+      contact: 5,
+    };
+    const sectionIndex = sectionMapping[section];
+    if (scrollViewRef.current) {
+      (scrollViewRef.current as any).scrollTo({ y: sectionIndex * 600, animated: true });
+    }
+  };
+
   const projects = [
-    { title: "Connect 4", description: "This is a game developed in Java.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAtSlf1LjXZDCFYCcv5KdJvkLKNPU-Et1XIw&s", link: "https://github.com/Ame314/juego4enlinea" },
-    { title: "Hangman", description: "Juego del ahorcado desarrollado en c#.", image: "https://i.pinimg.com/736x/94/5d/81/945d81b5b521e4e9ee60b78c511043ef.jpg", link: "https://github.com/Ame314/ahorcado" },
-    { title: "Noughts and crosses ", description: "noughts and crosses game developed in c#.", image: "https://papergames.io/es/assets/games/tictactoe/thumbnail.png", link: "https://github.com/Ame314/3enlinea" },
-    { title: "2048", description: "2048 game developed in Python.", image: "https://fscl01.fonpit.de/userfiles/4774964/image/AndroidPIT-2048-win.jpg", link: "https://github.com/Ame314/2048" },
+    {
+      title: "Connect 4",
+      description: "This is a game developed in Java.",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAtSlf1LjXZDCFYCcv5KdJvkLKNPU-Et1XIw&s",
+      link: "https://github.com/Ame314/juego4enlinea",
+    },
+    {
+      title: "Hangman",
+      description: "Juego del ahorcado desarrollado en c#.",
+      image: "https://i.pinimg.com/736x/94/5d/81/945d81b5b521e4e9ee60b78c511043ef.jpg",
+      link: "https://github.com/Ame314/ahorcado",
+    },
+    {
+      title: "Noughts and crosses",
+      description: "noughts and crosses game developed in c#.",
+      image: "https://papergames.io/es/assets/games/tictactoe/thumbnail.png",
+      link: "https://github.com/Ame314/3enlinea",
+    },
+    {
+      title: "2048",
+      description: "2048 game developed in Python.",
+      image: "https://fscl01.fonpit.de/userfiles/4774964/image/AndroidPIT-2048-win.jpg",
+      link: "https://github.com/Ame314/2048",
+    },
   ];
 
   const renderProjects = () =>
@@ -49,41 +85,44 @@ export default function Home() {
     ));
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <ScrollView ref={scrollViewRef} contentContainerStyle={styles.container}>
       <View style={styles.header}>
         <Text style={styles.logoText}>AG</Text>
         <View style={styles.navLinks}>
-          <TouchableOpacity onPress={() => { }}>
+          <TouchableOpacity onPress={() => handleScrollToSection("home")}>
             <Text style={styles.navLink}>Home</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => { }}>
+          <TouchableOpacity onPress={() => handleScrollToSection("about")}>
             <Text style={styles.navLink}>About me</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => { }}>
+          <TouchableOpacity onPress={() => handleScrollToSection("skills")}>
             <Text style={styles.navLink}>Skills</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => { }}>
+          <TouchableOpacity onPress={() => handleScrollToSection("projects")}>
             <Text style={styles.navLink}>Projects</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => { }}>
+          <TouchableOpacity
+            onPress={() => handleScrollToSection("certificates")}
+          >
             <Text style={styles.navLink}>Certificates</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => { }}>
+          <TouchableOpacity onPress={() => handleScrollToSection("contact")}>
             <Text style={styles.navLink}>Contact me</Text>
           </TouchableOpacity>
         </View>
       </View>
+
       <View style={styles.heroSection}>
         <Text style={styles.heroTitle}>
           I´m <Text style={styles.heroName}>Amelie Grob</Text>, Junior Developer
         </Text>
-        <Text style={styles.heroSubtitle}>Third level in Information Technology.</Text>
+        <Text style={styles.heroSubtitle}>
+          Third level in Information Technology.
+        </Text>
       </View>
 
       <View style={styles.profileSection}>
-        <Text style={styles.description}>
-        Every day I learn something new.
-        </Text>
+        <Text style={styles.description}>Every day I learn something new.</Text>
       </View>
 
       <View style={styles.blackBar} />
@@ -213,30 +252,37 @@ export default function Home() {
             />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => Linking.openURL("https://github.com/Ame314")}
+            onPress={() => Linking.openURL("https://www.instagram.com/amegrob/")}
           >
             <Image
               source={{
-                uri: "https://cdn.icon-icons.com/icons2/1907/PNG/512/iconfinder-github-4555889_121361.png",
+                uri: "https://cdn.icon-icons.com/icons2/1211/PNG/512/1491579602-yumminkysocialmedia36_83067.png",
               }}
               style={styles.projectImgcont}
             />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() =>
-              Linking.openURL("https://www.instagram.com/eilema_2006/")
-            }
+            onPress={() => Linking.openURL("https://github.com/Ame314")}
           >
             <Image
               source={{
-                uri: "https://cdn.icon-icons.com/icons2/1211/PNG/512/1491580635-yumminkysocialmedia26_83102.png",
+                uri: "https://cdn.icon-icons.com/icons2/317/PNG/512/github_icon_182931.png",
+              }}
+              style={styles.projectImgcont}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => Linking.openURL("mailto:your-email@example.com")}
+          >
+            <Image
+              source={{
+                uri: "https://cdn.icon-icons.com/icons2/2956/PNG/512/email_icon_189451.png",
               }}
               style={styles.projectImgcont}
             />
           </TouchableOpacity>
         </View>
-        <Text style={styles.footerText}>© 2024 Ame Grob</Text>
       </View>
     </ScrollView>
-);}
-
+  );
+}
