@@ -135,8 +135,13 @@ export default function Home() {
               and robotics.
             </Text>
           </View>
-          <View style={styles.skillsSeparator} />
-          <View style={styles.skillsSection}>
+          {/*<View style={styles.skillsSeparator} />*/}
+
+          
+        </View>
+        
+        <View style={styles.purpleSeparator} />
+        <View style={styles.skillsSection}>
             <Text style={styles.sectionTitle}>Skills</Text>
             <View style={styles.skillsContainer}>
               <Image
@@ -182,10 +187,8 @@ export default function Home() {
                 style={styles.skillsImage}
               />
             </View>
+            <View style={styles.blackBar} />
           </View>
-        </View>
-
-        <View style={styles.purpleSeparator} />
 
         <View style={styles.projectsSection}>
           <Text style={styles.sectionTitle}>Projects</Text>
@@ -199,7 +202,10 @@ export default function Home() {
           <View style={styles.certificateContainer}>
             <TouchableOpacity
               style={styles.certificateBox}
-              onPress={() => openModal("Description of the certificate.")}
+              onPress={() => openModal(
+                "Certificado de Aprobación\n\nEducatics\nCentro de Capacitación y Certificación Profesional\n\nSe otorga el presente certificado a\nAmelie Grob Rosero\npor haber participado y aprobado el curso de:\nProgramación Orientada a Objetos con Python\ndesarrollado del 15 al 28 de febrero del 2024, con una duración de 40 horas académicas en modalidad virtual. El Centro de Capacitación y Certificación Profesional emite este certificado a la persona mencionada por cumplir con los parámetros establecidos en gestión académica y calidad educativa de la institución.\n\nEcuador, febrero de 2024\n\nMSC. Edwin Cárdenas\nCoordinador Académico\n\nMSC. Edisson Rubio\nGerente"
+              )}
+              
             >
               <Image
                 source={{
@@ -245,6 +251,7 @@ export default function Home() {
                 )
               }
               style={styles.socialLink}
+              
             >
               <Text style={styles.socialLinkText}>LinkedIn</Text>
             </TouchableOpacity>

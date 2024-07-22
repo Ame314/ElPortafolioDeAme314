@@ -90,6 +90,8 @@ export const styles = StyleSheet.create({
   // Título de cada sección
   sectionTitle: {
     fontSize: 28,
+    textAlign:"center",
+    justifyContent:"center",
     fontWeight: "bold",
     marginBottom: 10,
     color: "#ffffff",
@@ -169,14 +171,15 @@ export const styles = StyleSheet.create({
   },
   // Contenedor para los certificados
   certificateContainer: {
+    
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
   },
   // Caja de cada certificado
   certificateBox: {
-    width: 200,
-    height: 200,
+    width: 400,
+    height: 400,
     backgroundColor: "#f0f0f0",
     justifyContent: "center",
     alignItems: "center",
