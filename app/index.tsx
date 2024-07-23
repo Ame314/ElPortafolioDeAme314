@@ -38,7 +38,7 @@ export default function Home() {
       title: "Connect 4",
       description: "This is a game developed in Java.",
       image: "https://ecdn.teacherspayteachers.com/thumbitem/Connect4-PowerPoint-Template-Create-Your-Own-Review-Game-1656583721/original-412622-1.jpg",
-      link: "https://github.com/Ame314/juego4enlinea",
+      link: "https://github.com/Ame314/ProyectoConnect4/",
     },
     {
       title: "Hangman",
@@ -47,10 +47,10 @@ export default function Home() {
       link: "https://github.com/Ame314/ahorcado",
     },
     {
-      title: "Noughts and crosses",
-      description: "noughts and crosses game developed in c#.",
+      title: "Tic-Tac-Toe",
+      description: "Tic-Tac-Toe game developed in c#.",
       image: "https://papergames.io/es/assets/games/tictactoe/thumbnail.png",
-      link: "https://github.com/Ame314/3enlinea",
+      link: "https://github.com/Ame314/ProyectoTresEnLinea",
     },
     {
       title: "2048",
