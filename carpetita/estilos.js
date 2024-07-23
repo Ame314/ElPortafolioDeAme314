@@ -220,6 +220,14 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
     marginVertical: 10,
   },
+  contactoImage: {
+    width: 50,
+    height: 50,
+  },
+  contactoImagegithub: {
+    width: 80,
+    height: 50,
+  },
   // Texto del botón de enlace en el modal
   linkButtonText: {
     color: "#ffffff",
@@ -249,6 +257,7 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     marginBottom: 10,
   },
+  
   // Enlace social en el pie de página
   socialLink: {
     marginHorizontal: 10,

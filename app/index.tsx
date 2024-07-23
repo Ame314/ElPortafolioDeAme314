@@ -9,7 +9,10 @@ import {
   Modal,
   Animated,
 } from "react-native";
-import { styles } from "../carpetita/estilos"; // Asegúrate de que la ruta sea correcta
+import { styles } from "../carpetita/estilos"; 
+import Menu from "../carpetita/menu";
+import Skills from "../carpetita/skills";
+import Link from "../carpetita/link";
 
 export default function Home() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -28,21 +31,6 @@ export default function Home() {
   const openModal = (content) => {
     setModalContent(content);
     setModalVisible(true);
-  };
-
-  const handleScrollToSection = (section) => {
-    const sectionMapping = {
-      home: 0,
-      about: 1,
-      skills: 1,
-      projects: 2,
-      certificates: 4,
-      contact: 5,
-    };
-    const sectionIndex = sectionMapping[section];
-    if (scrollViewRef.current) {
-      scrollViewRef.current.scrollTo({ y: sectionIndex * 800, animated: true });
-    }
   };
 
   const projects = [
@@ -86,29 +74,7 @@ export default function Home() {
 
   return (
     <View style={styles.pageContainer}>
-      <View style={styles.header}>
-        <Text style={styles.logoText}>AG</Text>
-        <View style={styles.navLinks}>
-          <TouchableOpacity onPress={() => handleScrollToSection("home")}>
-            <Text style={styles.navLink}>Home</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => handleScrollToSection("about")}>
-            <Text style={styles.navLink}>About me</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => handleScrollToSection("skills")}>
-            <Text style={styles.navLink}>Skills</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => handleScrollToSection("projects")}>
-            <Text style={styles.navLink}>Projects</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => handleScrollToSection("certificates")}>
-            <Text style={styles.navLink}>Certificates</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => handleScrollToSection("contact")}>
-            <Text style={styles.navLink}>Contact me</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+      <Menu scrollViewRef={scrollViewRef} />
       
       <ScrollView ref={scrollViewRef} contentContainerStyle={styles.container}>
         <Animated.View style={[styles.heroSection, { opacity: fadeInAnim }]}>
@@ -135,60 +101,11 @@ export default function Home() {
               and robotics.
             </Text>
           </View>
-          {/*<View style={styles.skillsSeparator} />*/}
-
-          
         </View>
         
         <View style={styles.purpleSeparator} />
-        <View style={styles.skillsSection}>
-            <Text style={styles.sectionTitle}>Skills</Text>
-            <View style={styles.skillsContainer}>
-              <Image
-                source={{
-                  uri: "https://cdn.icon-icons.com/icons2/2415/PNG/512/python_original_logo_icon_146381.png",
-                }}
-                style={styles.skillsImage}
-              />
-              <Image
-                source={{
-                  uri: "https://cdn.icon-icons.com/icons2/2407/PNG/512/docker_icon_146192.png",
-                }}
-                style={styles.skillsImage}
-              />
-              <Image
-                source={{
-                  uri: "https://cdn.icon-icons.com/icons2/2415/PNG/512/react_original_logo_icon_146374.png",
-                }}
-                style={styles.skillsImage}
-              />
-              <Image
-                source={{
-                  uri: "https://cdn.icon-icons.com/icons2/2415/PNG/512/csharp_original_logo_icon_146578.png",
-                }}
-                style={styles.skillsImage}
-              />
-              <Image
-                source={{
-                  uri: "https://cdn.icon-icons.com/icons2/2415/PNG/512/javascript_original_logo_icon_146455.png",
-                }}
-                style={styles.skillsImage}
-              />
-              <Image
-                source={{
-                  uri: "https://cdn.icon-icons.com/icons2/159/PNG/256/java_22523.png",
-                }}
-                style={styles.skillsImage}
-              />
-              <Image
-                source={{
-                  uri: "https://cdn.icon-icons.com/icons2/3398/PNG/512/plus_logo_c_icon_214621.png",
-                }}
-                style={styles.skillsImage}
-              />
-            </View>
-            <View style={styles.blackBar} />
-          </View>
+        
+        <Skills/>
 
         <View style={styles.projectsSection}>
           <Text style={styles.sectionTitle}>Projects</Text>
@@ -205,7 +122,6 @@ export default function Home() {
               onPress={() => openModal(
                 "Certificado de Aprobación\n\nEducatics\nCentro de Capacitación y Certificación Profesional\n\nSe otorga el presente certificado a\nAmelie Grob Rosero\npor haber participado y aprobado el curso de:\nProgramación Orientada a Objetos con Python\ndesarrollado del 15 al 28 de febrero del 2024, con una duración de 40 horas académicas en modalidad virtual. El Centro de Capacitación y Certificación Profesional emite este certificado a la persona mencionada por cumplir con los parámetros establecidos en gestión académica y calidad educativa de la institución.\n\nEcuador, febrero de 2024\n\nMSC. Edwin Cárdenas\nCoordinador Académico\n\nMSC. Edisson Rubio\nGerente"
               )}
-              
             >
               <Image
                 source={{
@@ -242,35 +158,8 @@ export default function Home() {
           </View>
         </Modal>
 
-        <View style={styles.footer}>
-          <View style={styles.linksContainer}>
-            <TouchableOpacity
-              onPress={() =>
-                Linking.openURL(
-                  "https://www.linkedin.com/in/amelie-grob-ro/"
-                )
-              }
-              style={styles.socialLink}
-              
-            >
-              <Text style={styles.socialLinkText}>LinkedIn</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => Linking.openURL("https://github.com/Ame314")}
-              style={styles.socialLink}
-            >
-              <Text style={styles.socialLinkText}>GitHub</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => Linking.openURL("https://www.instagram.com/eilema_2006/")}
-              style={styles.socialLink}
-            >
-              <Text style={styles.socialLinkText}>Twitter</Text>
-            </TouchableOpacity>
-          </View>
-          <Text style={styles.footerText}>© 2024 Amelie Grob. All rights reserved.</Text>
-        </View>
+        <Link/>
       </ScrollView>
-    </View>
-  );
+  </View>
+ );
 }
