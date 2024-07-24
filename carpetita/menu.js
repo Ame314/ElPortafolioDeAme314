@@ -9,7 +9,7 @@ const Menu = ({ scrollViewRef }) => {
       about: 1,
       skills: 1.2,
       projects: 1.6,
-      certificates: 2.3,
+      certificates: 2.4,
       contact: 5,
     };
     const sectionIndex = sectionMapping[section];

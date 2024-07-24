@@ -8,30 +8,27 @@ import {
   ScrollView,
   Modal,
   Animated,
-  Dimensions,
 } from "react-native";
 import { styles } from "../carpetita/estilos";
 import Menu from "../carpetita/menu";
 import Skills from "../carpetita/skills";
 import Link from "../carpetita/link";
 
-const { width, height } = Dimensions.get("window");
-
 export default function Home() {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalContent, setModalContent] = useState({});
-  const [fadeInAnim] = useState(new Animated.Value(0)); // Animación para el fade-in
+  const [fadeInAnim] = useState(new Animated.Value(3)); // Animación para el fade-in
   const scrollViewRef = useRef(null);
 
   useEffect(() => {
     Animated.timing(fadeInAnim, {
       toValue: 1,
-      duration: 1000,
+      duration: 11000,
       useNativeDriver: true,
     }).start();
   }, [fadeInAnim]);
 
-  const openModal = (content) => {
+  const openModal = (content: { description: any; link?: any; }) => {
     setModalContent(content);
     setModalVisible(true);
   };
@@ -75,12 +72,36 @@ export default function Home() {
       </TouchableOpacity>
     ));
 
+  // Creando un efecto de aparición gradual
+  const createFadeInAnimation = (value: Animated.Value) => {
+    useEffect(() => {
+      Animated.timing(value, {
+        toValue: 1,
+        duration: 1000,
+        useNativeDriver: true,
+      }).start();
+    }, [value]);
+  };
+
+  // Añadiendo animaciones para cada sección
+  const heroFadeAnim = useRef(new Animated.Value(3)).current;
+  const profileFadeAnim = useRef(new Animated.Value(3)).current;
+  const aboutFadeAnim = useRef(new Animated.Value(3)).current;
+  const projectsFadeAnim = useRef(new Animated.Value(3)).current;
+  const certificatesFadeAnim = useRef(new Animated.Value(3)).current;
+
+  createFadeInAnimation(heroFadeAnim);
+  createFadeInAnimation(profileFadeAnim);
+  createFadeInAnimation(aboutFadeAnim);
+  createFadeInAnimation(projectsFadeAnim);
+  createFadeInAnimation(certificatesFadeAnim);
+
   return (
     <View style={styles.pageContainer}>
       <Menu scrollViewRef={scrollViewRef} />
 
       <ScrollView ref={scrollViewRef} contentContainerStyle={styles.container}>
-        <Animated.View style={[styles.heroSection, { opacity: fadeInAnim }]}>
+        <Animated.View style={[styles.heroSection, { opacity: heroFadeAnim }]}>
           <Text style={styles.heroTitle}>
             I´m <Text style={styles.heroName}>Amelie Grob</Text>, Junior Developer
           </Text>
@@ -89,13 +110,13 @@ export default function Home() {
           </Text>
         </Animated.View>
 
-        <View style={styles.profileSection}>
+        <Animated.View style={[styles.profileSection, { opacity: profileFadeAnim }]}>
           <Text style={styles.description}>Every day I learn something new.</Text>
-        </View>
+        </Animated.View>
 
         <View style={styles.blackBar} />
 
-        <View style={styles.aboutSkillsSection}>
+        <Animated.View style={[styles.aboutSkillsSection, { opacity: aboutFadeAnim }]}>
           <View style={styles.aboutSection}>
             <Text style={styles.sectionTitle}>About Me</Text>
             <Text style={styles.aboutDescription}>
@@ -104,20 +125,20 @@ export default function Home() {
               and robotics.
             </Text>
           </View>
-        </View>
+        </Animated.View>
 
         <View style={styles.purpleSeparator} />
 
         <Skills />
 
-        <View style={styles.projectsSection}>
+        <Animated.View style={[styles.projectsSection, { opacity: projectsFadeAnim }]}>
           <Text style={styles.sectionTitle}>Projects</Text>
           <View style={styles.projectsRow}>{renderProjects()}</View>
-        </View>
+        </Animated.View>
 
         <View style={styles.purpleSeparator} />
 
-        <View style={styles.certificatesSection}>
+        <Animated.View style={[styles.certificatesSection, { opacity: certificatesFadeAnim }]}>
           <Text style={styles.sectionTitle}>Certificates</Text>
           <View style={styles.certificateContainer}>
             <TouchableOpacity
@@ -135,7 +156,7 @@ export default function Home() {
               />
             </TouchableOpacity>
           </View>
-        </View>
+        </Animated.View>
 
         <Modal
           visible={modalVisible}

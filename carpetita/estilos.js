@@ -154,8 +154,8 @@ export const styles = StyleSheet.create({
   },
   // Imagen de cada proyecto
   projectImage: {
-    width: 100,
-    height: 100,
+    width: 200,
+    height: 200,
     marginBottom: 10,
   },
   // Título de cada proyecto
