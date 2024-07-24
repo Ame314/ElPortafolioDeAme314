@@ -36,7 +36,7 @@ export const Link = () => {
         >
           <Image
             style={styles.contactoImage}
-            source={require("./img/instagramlogo1.jpg")} // Ruta local de la imagen
+            source={require("./img/instalogo.png")} // Ruta local de la imagen
           />
         </TouchableOpacity>
 

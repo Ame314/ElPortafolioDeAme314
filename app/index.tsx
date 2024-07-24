@@ -8,15 +8,18 @@ import {
   ScrollView,
   Modal,
   Animated,
+  Dimensions,
 } from "react-native";
-import { styles } from "../carpetita/estilos"; 
+import { styles } from "../carpetita/estilos";
 import Menu from "../carpetita/menu";
 import Skills from "../carpetita/skills";
 import Link from "../carpetita/link";
 
+const { width, height } = Dimensions.get("window");
+
 export default function Home() {
   const [modalVisible, setModalVisible] = useState(false);
-  const [modalContent, setModalContent] = useState("");
+  const [modalContent, setModalContent] = useState({});
   const [fadeInAnim] = useState(new Animated.Value(0)); // Animación para el fade-in
   const scrollViewRef = useRef(null);
 
@@ -44,7 +47,7 @@ export default function Home() {
       title: "Hangman",
       description: "Juego del ahorcado desarrollado en c#.",
       image: "https://i.pinimg.com/736x/94/5d/81/945d81b5b521e4e9ee60b78c511043ef.jpg",
-      link: "https://github.com/Ame314/ahorcado",
+      link: "https://github.com/Ame314/Tarea_16-s2-Grob",
     },
     {
       title: "Tic-Tac-Toe",
@@ -56,7 +59,7 @@ export default function Home() {
       title: "2048",
       description: "2048 game developed in Python.",
       image: "https://fscl01.fonpit.de/userfiles/4774964/image/AndroidPIT-2048-win.jpg",
-      link: "https://github.com/Ame314/2048",
+      link: "https://github.com/Ame314/Proyecto2048",
     },
   ];
 
@@ -65,7 +68,7 @@ export default function Home() {
       <TouchableOpacity
         key={index}
         style={styles.projectBox}
-        onPress={() => openModal(project.description)}
+        onPress={() => openModal(project)}
       >
         <Image source={{ uri: project.image }} style={styles.projectImage} />
         <Text style={styles.projectTitle}>{project.title}</Text>
@@ -75,7 +78,7 @@ export default function Home() {
   return (
     <View style={styles.pageContainer}>
       <Menu scrollViewRef={scrollViewRef} />
-      
+
       <ScrollView ref={scrollViewRef} contentContainerStyle={styles.container}>
         <Animated.View style={[styles.heroSection, { opacity: fadeInAnim }]}>
           <Text style={styles.heroTitle}>
@@ -102,10 +105,10 @@ export default function Home() {
             </Text>
           </View>
         </View>
-        
+
         <View style={styles.purpleSeparator} />
-        
-        <Skills/>
+
+        <Skills />
 
         <View style={styles.projectsSection}>
           <Text style={styles.sectionTitle}>Projects</Text>
@@ -119,14 +122,15 @@ export default function Home() {
           <View style={styles.certificateContainer}>
             <TouchableOpacity
               style={styles.certificateBox}
-              onPress={() => openModal(
-                "Certificado de Aprobación\n\nEducatics\nCentro de Capacitación y Certificación Profesional\n\nSe otorga el presente certificado a\nAmelie Grob Rosero\npor haber participado y aprobado el curso de:\nProgramación Orientada a Objetos con Python\ndesarrollado del 15 al 28 de febrero del 2024, con una duración de 40 horas académicas en modalidad virtual. El Centro de Capacitación y Certificación Profesional emite este certificado a la persona mencionada por cumplir con los parámetros establecidos en gestión académica y calidad educativa de la institución.\n\nEcuador, febrero de 2024\n\nMSC. Edwin Cárdenas\nCoordinador Académico\n\nMSC. Edisson Rubio\nGerente"
-              )}
+              onPress={() =>
+                openModal({
+                  description:
+                    "Certificado de Aprobación\n\nEducatics\nCentro de Capacitación y Certificación Profesional\n\nSe otorga el presente certificado a\nAmelie Grob Rosero\npor haber participado y aprobado el curso de:\nProgramación Orientada a Objetos con Python\ndesarrollado del 15 al 28 de febrero del 2024, con una duración de 40 horas académicas.\n",
+                })
+              }
             >
               <Image
-                source={{
-                  uri: "https://web.whatsapp.com/3c2def66-5620-4645-99bd-5adacc5a9d6c",
-                }}
+                source={require("../carpetita/img/certificado.png")}
                 style={styles.certificateImage}
               />
             </TouchableOpacity>
@@ -141,13 +145,15 @@ export default function Home() {
         >
           <View style={styles.modalBackground}>
             <View style={styles.modalContainer}>
-              <Text style={styles.modalText}>{modalContent}</Text>
-              <TouchableOpacity
-                onPress={() => Linking.openURL(modalContent.link)}
-                style={styles.linkButton}
-              >
-                <Text style={styles.linkButtonText}>Open on GitHub</Text>
-              </TouchableOpacity>
+              <Text style={styles.modalText}>{modalContent.description}</Text>
+              {modalContent.link && (
+                <TouchableOpacity
+                  onPress={() => Linking.openURL(modalContent.link)}
+                  style={styles.linkButton}
+                >
+                  <Text style={styles.linkButtonText}>Open on GitHub</Text>
+                </TouchableOpacity>
+              )}
               <TouchableOpacity
                 onPress={() => setModalVisible(false)}
                 style={styles.closeButton}
@@ -158,8 +164,8 @@ export default function Home() {
           </View>
         </Modal>
 
-        <Link/>
+        <Link />
       </ScrollView>
-  </View>
- );
+    </View>
+  );
 }

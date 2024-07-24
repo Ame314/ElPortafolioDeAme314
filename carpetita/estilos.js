@@ -178,8 +178,8 @@ export const styles = StyleSheet.create({
   },
   // Caja de cada certificado
   certificateBox: {
-    width: 400,
-    height: 400,
+    width: 200,
+    height: 200,
     backgroundColor: "#f0f0f0",
     justifyContent: "center",
     alignItems: "center",
@@ -202,7 +202,7 @@ export const styles = StyleSheet.create({
   // Contenedor del modal
   modalContainer: {
     width: 300,
-    backgroundColor: "#ffffff",
+    backgroundColor: "#a8a8a8",
     borderRadius: 10,
     padding: 20,
     alignItems: "center",

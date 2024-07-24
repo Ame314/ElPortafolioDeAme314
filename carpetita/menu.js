@@ -7,9 +7,9 @@ const Menu = ({ scrollViewRef }) => {
     const sectionMapping = {
       home: 0,
       about: 1,
-      skills: 1,
-      projects: 2,
-      certificates: 3,
+      skills: 1.2,
+      projects: 1.6,
+      certificates: 2.3,
       contact: 5,
     };
     const sectionIndex = sectionMapping[section];
@@ -20,8 +20,9 @@ const Menu = ({ scrollViewRef }) => {
 
   return (
     <View style={styles.header}>
-      <Text style={styles.logoText}>AG</Text>
+      
       <View style={styles.navLinks}>
+      <Text style={styles.logoText}>AG</Text>
         <TouchableOpacity onPress={() => handleScrollToSection("home")}>
           <Text style={styles.navLink}>Home</Text>
         </TouchableOpacity>
