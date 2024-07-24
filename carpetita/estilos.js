@@ -35,7 +35,7 @@ export const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
   },
-  // Sección del héroe (principal)
+  // Sección del héroe 
   heroSection: {
     height: 800, // Altura de la sección principal
     justifyContent: "center",
@@ -273,6 +273,7 @@ export const styles = StyleSheet.create({
     fontSize: 14,
     textAlign: "center",
   },
+
 
 
 

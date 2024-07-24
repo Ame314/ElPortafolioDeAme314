@@ -77,7 +77,7 @@ export default function Home() {
     useEffect(() => {
       Animated.timing(value, {
         toValue: 1,
-        duration: 1000,
+        duration: 11000,
         useNativeDriver: true,
       }).start();
     }, [value]);
@@ -120,9 +120,9 @@ export default function Home() {
           <View style={styles.aboutSection}>
             <Text style={styles.sectionTitle}>About Me</Text>
             <Text style={styles.aboutDescription}>
-              Hi, I'm Amelie Grob, a 17-year-old computer science student in my
-              third semester of university. I have a strong passion for technology
-              and robotics.
+            Hi, I'm Amelie Grob, a 17-year-old computer science student in my third semester of university with a passion for 
+            technology and robotics. I have knowledge in several programming languages, including Java, C#, Python, C++ and React. 
+            I have developed three significant projects: Connect 4, Tres en Línea and Ahorcado; one in Java and the others in C#.
             </Text>
           </View>
         </Animated.View>
@@ -146,7 +146,7 @@ export default function Home() {
               onPress={() =>
                 openModal({
                   description:
-                    "Certificado de Aprobación\n\nEducatics\nCentro de Capacitación y Certificación Profesional\n\nSe otorga el presente certificado a\nAmelie Grob Rosero\npor haber participado y aprobado el curso de:\nProgramación Orientada a Objetos con Python\ndesarrollado del 15 al 28 de febrero del 2024, con una duración de 40 horas académicas.\n",
+                    "Certificate of Completion\n\nEducatics\nCenter for Professional Training and Certification\n\nThis certificate is awarded to\nAmelie Grob Rosero\nfor participating in and completing the course on:\nObject-Oriented Programming with Python\nheld from February 15 to February 28, 2024, with a duration of 40 academic hours.\n",
                 })
               }
             >

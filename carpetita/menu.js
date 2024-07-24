@@ -7,8 +7,8 @@ const Menu = ({ scrollViewRef }) => {
     const sectionMapping = {
       home: 0,
       about: 1,
-      skills: 1.2,
-      projects: 1.6,
+      skills: 1.3,
+      projects: 1.7,
       certificates: 2.4,
       contact: 5,
     };
